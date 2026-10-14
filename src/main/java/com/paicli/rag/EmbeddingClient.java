@@ -286,14 +286,39 @@ public class EmbeddingClient {
     }
 
     private static String getEnv(String key, String defaultValue) {
+        // 1. 优先读取系统环境变量
         String value = System.getenv(key);
-        if (value != null && !value.isEmpty()) {
-            return value;
+        if (value != null && !value.isBlank()) {
+            return value.trim();
         }
+
+        // 2. 读取 JVM 系统属性
         value = System.getProperty(key);
-        if (value != null && !value.isEmpty()) {
-            return value;
+        if (value != null && !value.isBlank()) {
+            return value.trim();
         }
+
+        // 3. 读取当前工作目录的 .env 文件
+        java.nio.file.Path envFile = java.nio.file.Path.of(".env");
+
+        if (java.nio.file.Files.exists(envFile)) {
+            try {
+                for (String line : java.nio.file.Files.readAllLines(envFile)) {
+                    line = line.trim();
+
+                    if (line.isEmpty() || line.startsWith("#")) {
+                        continue;
+                    }
+
+                    if (line.startsWith(key + "=")) {
+                        return line.substring(key.length() + 1).trim();
+                    }
+                }
+            } catch (java.io.IOException e) {
+                System.err.println("读取 .env 失败: " + e.getMessage());
+            }
+        }
+
         return defaultValue;
     }
 

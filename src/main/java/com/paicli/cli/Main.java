@@ -413,6 +413,12 @@ public class Main {
             bindCtrlVToClipboardImage(lineReader);
             bindEscToClearInput(lineReader);
 
+            // 当前代码检索项目路径
+            String currentProjectPath = Path.of(".")
+                    .toAbsolutePath()
+                    .normalize()
+                    .toString();
+
             while (true) {
                 refreshTerminalColumns(terminal);
                 List<String> mcpNotices = mcpServerManager.drainNotices();
@@ -904,15 +910,29 @@ public class Main {
                         continue;
                     }
                     case INDEX_CODE -> {
-                        String indexPath = command.payload() != null ? command.payload() : ".";
-                        CodeIndex indexer = new CodeIndex(ui::println);
-                        indexer.index(indexPath);
-                        ui.println();
+                        String indexPath = command.payload() != null
+                                ? command.payload().trim()
+                                : ".";
 
-                        // 同步项目路径到 ToolRegistry，让 search_code 工具可以正常工作
-                        String absPath = new File(indexPath).getAbsolutePath();
+                        // 统一转换为绝对路径
+                        String absPath = Path.of(indexPath)
+                                .toAbsolutePath()
+                                .normalize()
+                                .toString();
+
+                        // 构建代码索引
+                        CodeIndex indexer = new CodeIndex(ui::println);
+                        indexer.index(absPath);
+
+                        // 保存当前项目路径
+                        currentProjectPath = absPath;
+
+                        // 同步 Agent 工具和记忆管理器的项目路径
                         reactAgent.getToolRegistry().setProjectPath(absPath);
                         reactAgent.getMemoryManager().setProjectPath(absPath);
+
+                        ui.println("✅ 当前索引项目: " + currentProjectPath);
+                        ui.println();
                         continue;
                     }
                     case SEARCH_CODE -> {
@@ -922,7 +942,7 @@ public class Main {
                             continue;
                         }
                         ui.println("🔍 检索: " + query);
-                        try (CodeRetriever retriever = new CodeRetriever(".")) {
+                        try (CodeRetriever retriever = new CodeRetriever(currentProjectPath)) {
                             var stats = retriever.getStats();
                             if (stats.chunkCount() == 0) {
                                 ui.println("⚠️ 代码库尚未索引，请先使用 /index 命令\n");
@@ -946,7 +966,7 @@ public class Main {
                             continue;
                         }
                         ui.println("🕸️ 查询类关系图谱: " + className);
-                        try (CodeRetriever retriever = new CodeRetriever(".")) {
+                        try (CodeRetriever retriever = new CodeRetriever(currentProjectPath)) {
                             var stats = retriever.getStats();
                             if (stats.chunkCount() == 0) {
                                 ui.println("⚠️ 代码库尚未索引，请先使用 /index 命令\n");

@@ -6,7 +6,7 @@ AI 编码助手进入 PaiCLI 仓库时先读这个文件：Codex 直接读取，
 
 ## 信息优先级
 
-代码实际行为 > `AGENTS.md` > `PAI.md` > `README.md` > `ROADMAP.md` > `CLAUDE.md`。`ROADMAP.md` 写的是打算做什么，不代表已经做完。
+代码实际行为 > `AGENTS.md` > `PAI.md` > `CLAUDE.md`。
 
 ## 项目概况
 

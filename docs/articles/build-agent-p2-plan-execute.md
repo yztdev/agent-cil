@@ -8,11 +8,11 @@ tag:
   - Java
 category:
   - AI
-author: 沉默王二
+author: yzt
 date: 2026-04-19
 ---
 
-大家好，我是二哥呀。
+
 
 第 1 期的 ReAct 已经能干活了，读文件、改代码、跑命令，一步接一步。
 

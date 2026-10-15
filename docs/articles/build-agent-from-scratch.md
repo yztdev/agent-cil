@@ -8,11 +8,11 @@ tag:
   - Java
 category:
   - AI
-author: 沉默王二
+author: yzt
 date: 2026-04-18
 ---
 
-大家好，我是二哥呀。
+
 
 Opus 5.5 发布后测试了几天，发现太强大了，加上GPT-6 Astra 也很牛逼，于是打算升级和重构一下PaiCLI的代码和教程。
 

@@ -8,11 +8,11 @@ tag:
   - RAG
 category:
   - AI
-author: 沉默王二
+author: yzt
 date: 2026-04-21
 ---
 
-大家好，我是二哥呀。
+
 
 这一期我们来给 Agent 装上 RAG，让 Agent 可以直接读我们的代码库。
 

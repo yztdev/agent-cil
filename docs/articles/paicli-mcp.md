@@ -7,11 +7,11 @@ tag:
   - PaiCLI
 category:
   - AI
-author: 沉默王二
+author: yzt
 date: 2026-04-28
 ---
 
-大家好，我是二哥呀。
+
 
 上一期我们给 PaiCLI 加上了联网能力，搜索和抓取都有了。但这些工具都是我们自己实现的。
 
@@ -98,7 +98,7 @@ Agent 自动调用了 `zread.read` 这个 MCP 工具，去 GitHub 上抓取了 R
 
 最好清一下上下文 `/clear`。
 
-输入提示词：把 README.md 第 3 行那句“对标 Claude Code”改成“对标 Claude Code 作者为沉默王二”。
+输入提示词：把 README.md 第 3 行那句“对标 Claude Code”改成“对标 Claude Code 作者为yzt”。
 
 ![](https://cdn.paicoding.com/stutymore/sucai-20260428181425.png)
 

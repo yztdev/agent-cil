@@ -133,11 +133,11 @@ class MainInputNormalizationTest {
     void submittedPromptIsRenderedBackIntoTranscript() {
         ByteArrayOutputStream sink = new ByteArrayOutputStream();
 
-        Main.printSubmittedPrompt(new PrintStream(sink, true, StandardCharsets.UTF_8), "  沉默王二是谁？  ");
+        Main.printSubmittedPrompt(new PrintStream(sink, true, StandardCharsets.UTF_8), "  yzt是谁？  ");
 
         String emitted = sink.toString(StandardCharsets.UTF_8);
         assertTrue(emitted.contains(">"), emitted);
-        assertTrue(emitted.contains("沉默王二是谁？"), emitted);
+        assertTrue(emitted.contains("yzt是谁？"), emitted);
         assertTrue(emitted.endsWith("\n"), emitted);
         assertFalse(emitted.endsWith("\n\n"), emitted);
     }

@@ -14,11 +14,11 @@ tag:
   - 学习路线
 category:
   - AI
-author: 沉默王二
+author: yzt
 date: 2026-06-03
 ---
 
-大家好，我是二哥呀。
+
 
 星球里有个球友来问我：“二哥，PaiCLI 我想跟着学，我该从哪下手？大概要学多久才能拿出去面试？”
 
@@ -91,7 +91,7 @@ java -jar target/paicli-1.0-SNAPSHOT.jar
 
 第二件事，进 Plan 模式。输入 `/plan` 再给它一个多步骤任务，比如“创建一个 demo 项目，然后读取 pom.xml，最后验证项目结构”。
 
-第三件事，试试联网。让它“搜一下沉默王二是哪个逼”，观察它什么时候决定调 `web_search`，什么时候直接回答。
+第三件事，试试联网。让它“搜一下yzt是哪个逼”，观察它什么时候决定调 `web_search`，什么时候直接回答。
 
 ![](https://cdn.paicoding.com/stutymore/paicli-xuexiluxian-20260603070721.png)
 

@@ -13,11 +13,11 @@ tag:
   - Python
 category:
   - AI
-author: 沉默王二
+author: yzt
 date: 2026-07-08
 ---
 
-大家好，我是二哥呀。
+
 
 目前 PaiCLI 已经有 Java 版、TypeScript 版和 Python 版了，三个版本的核心架构完全一致，区别只在语言层面。
 
